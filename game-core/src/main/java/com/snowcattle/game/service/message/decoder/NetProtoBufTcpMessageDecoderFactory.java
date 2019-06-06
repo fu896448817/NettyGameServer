@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 /**
  * Created by jiangwenping on 17/2/3.
  */
-
 @Service
 public class NetProtoBufTcpMessageDecoderFactory implements INetProtoBufTcpMessageDecoderFactory {
 
@@ -37,6 +36,7 @@ public class NetProtoBufTcpMessageDecoderFactory implements INetProtoBufTcpMessa
         NetProtoBufMessageBody netMessageBody = new NetProtoBufMessageBody();
         int byteLength = byteBuf.readableBytes();
         byte[] bytes = new byte[byteLength];
+        byteBuf.getBytes(byteBuf.readerIndex(), bytes);
         netMessageBody.setBytes(bytes);
         netMessage.setNetMessageHead(netMessageHead);
         netMessage.setNetMessageBody(netMessageBody);
